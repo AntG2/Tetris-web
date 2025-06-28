@@ -18,7 +18,7 @@ class RussianSquare {
         this.gameRunning = false;
         this.gamePaused = false;
         this.dropTime = 0;
-        this.dropInterval = 1000;
+        this.dropInterval = 500;
         
         this.pieces = [
             // I piece
@@ -264,7 +264,7 @@ class RussianSquare {
             this.lines += linesCleared;
             this.score += linesCleared * 100 * this.level;
             this.level = Math.floor(this.lines / 10) + 1;
-            this.dropInterval = Math.max(100, 1000 - (this.level - 1) * 100);
+            this.dropInterval = Math.max(50, 500 - (this.level - 1) * 50);
         }
     }
     
@@ -287,7 +287,7 @@ class RussianSquare {
         this.score = 0;
         this.lines = 0;
         this.level = 1;
-        this.dropInterval = 1000;
+        this.dropInterval = 500;
         this.gameRunning = true;
         this.gamePaused = false;
         this.dropTime = 0;
