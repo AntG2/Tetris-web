@@ -15,7 +15,7 @@ class RussianSquare {
         this.score = 0;
         this.lines = 0;
         this.level = 1;
-        this.gameRunning = true;
+        this.gameRunning = false;
         this.gamePaused = false;
         this.dropTime = 0;
         this.dropInterval = 1000;
@@ -86,6 +86,7 @@ class RussianSquare {
         this.spawnPiece();
         this.spawnNextPiece();
         this.updateDisplay();
+        this.showOverlay('Russian Square', 'Press Space or click New Game to start');
         this.gameLoop();
     }
     
@@ -101,7 +102,26 @@ class RussianSquare {
     }
     
     handleKeyPress(e) {
-        if (!this.gameRunning || this.gamePaused) return;
+        // Prevent default space key behavior to avoid page scrolling
+        if (e.code === 'Space') {
+            e.preventDefault();
+        }
+        
+        // If game is not running, only allow space to start
+        if (!this.gameRunning) {
+            if (e.code === 'Space') {
+                this.newGame();
+            }
+            return;
+        }
+        
+        // If game is paused, only allow P to resume
+        if (this.gamePaused) {
+            if (e.code === 'KeyP') {
+                this.togglePause();
+            }
+            return;
+        }
         
         switch(e.code) {
             case 'ArrowLeft':
@@ -271,6 +291,10 @@ class RussianSquare {
         this.gameRunning = true;
         this.gamePaused = false;
         this.dropTime = 0;
+        
+        // Clear any existing pieces
+        this.currentPiece = null;
+        this.nextPiece = null;
         
         this.spawnPiece();
         this.spawnNextPiece();
