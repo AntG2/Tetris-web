@@ -15,7 +15,7 @@ class RussianSquare {
         this.score = 0;
         this.lines = 0;
         this.level = 1;
-        this.gameRunning = false;
+        this.gameRunning = true;
         this.gamePaused = false;
         this.dropTime = 0;
         this.dropInterval = 1000;
