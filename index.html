@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Russian Square - Tetris Game</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="game-container">
+        <header class="game-header">
+            <h1 class="game-title">Russian Square</h1>
+            <div class="score-board">
+                <div class="score-item">
+                    <span class="score-label">Score</span>
+                    <span class="score-value" id="score">0</span>
+                </div>
+                <div class="score-item">
+                    <span class="score-label">Lines</span>
+                    <span class="score-value" id="lines">0</span>
+                </div>
+                <div class="score-item">
+                    <span class="score-label">Level</span>
+                    <span class="score-value" id="level">1</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="game-main">
+            <div class="game-area">
+                <canvas id="gameCanvas" width="450" height="600"></canvas>
+                <div class="game-overlay" id="gameOverlay">
+                    <div class="overlay-content">
+                        <h2 id="overlayTitle">Game Over</h2>
+                        <p id="overlayMessage">Press Space to restart</p>
+                        <button id="restartBtn" class="restart-btn">Restart Game</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-sidebar">
+                <div class="next-piece">
+                    <h3>Next Piece</h3>
+                    <canvas id="nextCanvas" width="120" height="120"></canvas>
+                </div>
+
+                <div class="controls">
+                    <h3>Controls</h3>
+                    <div class="control-item">
+                        <span class="key">← →</span>
+                        <span class="action">Move</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="key">↓</span>
+                        <span class="action">Soft Drop</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="key">↑</span>
+                        <span class="action">Rotate</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="key">Space</span>
+                        <span class="action">Hard Drop</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="key">P</span>
+                        <span class="action">Pause</span>
+                    </div>
+                </div>
+
+                <div class="game-buttons">
+                    <button id="pauseBtn" class="game-btn">Pause</button>
+                    <button id="newGameBtn" class="game-btn">New Game</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html> 
